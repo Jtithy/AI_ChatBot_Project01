@@ -1,0 +1,65 @@
+{
+    "intents": [
+        {
+            "tag": "greeting",
+            "patterns": [
+                "Hi",
+                "Hello",
+                "Hey",
+                "Good morning",
+                "Good evening"
+            ],
+            "responses": [
+                "Hello! How can I help you?",
+                "Hi there! What can I do for you?",
+                "Hey! How may I assist you today?"
+            ],
+            "context_set": "conversation_started"
+        },
+        {
+            "tag": "help",
+            "patterns": [
+                "Can you help me?",
+                "I need help",
+                "Support",
+                "Help me"
+            ],
+            "responses": [
+                "Sure! Tell me how I can help you.",
+                "I'm here to help. What do you need?"
+            ],
+            "context_filter": "conversation_started",
+            "context_set": "awaiting_help_request"
+        },
+        {
+            "tag": "thanks",
+            "patterns": [
+                "Thanks",
+                "Thank you",
+                "That's helpful",
+                "Thanks a lot"
+            ],
+            "responses": [
+                "You're welcome!",
+                "Happy to help!",
+                "Anytime 😊"
+            ],
+            "context_filter": "awaiting_help_request"
+        },
+        {
+            "tag": "goodbye",
+            "patterns": [
+                "Bye",
+                "See you",
+                "Goodbye",
+                "Take care"
+            ],
+            "responses": [
+                "Goodbye! Have a great day 😊",
+                "See you soon!",
+                "Take care!"
+            ],
+            "context_filter": "conversation_started"
+        }
+    ]
+}
