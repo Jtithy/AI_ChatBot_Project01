@@ -90,3 +90,12 @@ model.add(tf.keras.leyars.Dense(
 model.add(tf.keras.leyars.Dense(
     len(trainY[0]), 
     activation = 'softmax'))
+
+sgd = tf.keras.optimizers.SGD(learning_rate = 0.01, momemntum = 0.9, nesterov = True)
+
+model.compile(loss = 'categorical_crossentropy', optimizer = sgd, matrics = ['accuracy'])
+hist = model.fit(np.array(trainX), np.arrey(trainY), epochs = 200, batch_size = 5, verboss = 1)
+
+# Save train model to a file
+model.save('chatbot_practice.h5', hist)
+print("Executed")
