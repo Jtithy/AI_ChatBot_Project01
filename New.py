@@ -11,6 +11,10 @@ import tensorflow as tf
 import nltk
 from nltk.stem import WordNetLemmatizer
 
+#NTKL Data Download
+nltk.download('punkt')
+nltk.download('wordnet')
+
 # Lemmatizer reduces words to base form (e.g., running → run)
 lemmatizer = WordNetLemmatizer()
 
@@ -79,23 +83,23 @@ model.add(tf.keras.layers.Dense(
     input_shape=(len(trainX[0]),),
     activation='relu'
 ))
-model.add(tf.keras.leyars.Dropout(0.5))
+model.add(tf.keras.layers.Dropout(0.5))
 
 # Second hidden layer with 64 neurons
-model.add(tf.keras.leyars.Dense(
+model.add(tf.keras.layers.Dense(
     64, 
-    activition = 'relu'))
+    activation='relu'))
 
 # Softmax converts outputs to probabilities
-model.add(tf.keras.leyars.Dense(
+model.add(tf.keras.layers.Dense(
     len(trainY[0]), 
     activation = 'softmax'))
 
-sgd = tf.keras.optimizers.SGD(learning_rate = 0.01, momemntum = 0.9, nesterov = True)
+sgd = tf.keras.optimizers.SGD(learning_rate = 0.01, momentum = 0.9, nesterov = True)
 
-model.compile(loss = 'categorical_crossentropy', optimizer = sgd, matrics = ['accuracy'])
-hist = model.fit(np.array(trainX), np.arrey(trainY), epochs = 200, batch_size = 5, verboss = 1)
+model.compile(loss = 'categorical_crossentropy', optimizer = sgd, metrics = ['accuracy'])
+hist = model.fit(np.array(trainX), np.array(trainY), epochs = 200, batch_size = 5, verbose=1)
 
 # Save train model to a file
-model.save('chatbot_demo.h5', hist)
+model.save('chatbot_demo.h5')
 print("Executed")
