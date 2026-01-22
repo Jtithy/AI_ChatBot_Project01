@@ -11,7 +11,7 @@ from nltk.stem import WordNetLemmatizer
 from keras.models import load_model
 
 # Lemmatizer reduces words to base form
-lemmatizer = WordNetLemmatizer(0)
+lemmatizer = WordNetLemmatizer()
 
 # Load intents file
 intents = json.loads(open('intents.json').read())
