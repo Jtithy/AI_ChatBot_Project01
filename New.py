@@ -13,6 +13,7 @@ from nltk.stem import WordNetLemmatizer
 
 #NTKL Data Download
 nltk.download('punkt')
+nltk.download('punkt_tab')
 nltk.download('wordnet')
 
 # Lemmatizer reduces words to base form (e.g., running → run)
@@ -32,7 +33,7 @@ ignoreLetters = ['?', '!', '.', ',']
 # Loop through each intent and its patterns
 for intent in intents['intents']:
     for pattern in intent['patterns']:
-        wordList = nltk.word_tokenize(pattern)
+        wordList = pattern.split()
         words.extend(wordList)
         documents.append((wordList, intent['tag']))
         if intent['tag'] not in classes:
