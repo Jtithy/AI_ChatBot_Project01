@@ -57,5 +57,17 @@ def predict_class(sentence):
     # Return predicted intents
     return return_list      
 
-  
-    
+# Select a response based on predicted intent
+def get_response(intents_list, intents_json):
+    list_of_intents = intents_json['intents']
+    tag = intents_list[0]['intents']
+    # Search for matching intent in JSON
+    for i in list_of_intents:
+        if i['tag'] == tag:
+            result = random.choice(i['response'])
+            break
+    # Return the selected response
+    return result
+# Confirmation message
+print("Great! Bot is running.")
+
