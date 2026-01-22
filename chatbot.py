@@ -38,5 +38,24 @@ def bag_of_words(sentence):
                 
     return np.array(bag)
 
-            
+# Predict the intent class of a given sentence
+def predict_class(sentence):
+    bow = bag_of_words(sentence)
+    res = model.predict(np.array([bow]))[0] 
+    
+    # Minimum probability required to consider an intent
+    ERROR_TRESHOLD = 0.25
+    
+    # Filter intents with probability above the threshold
+    results = [[i,r] for i, r in enumerate(res) if r>ERROR_TRESHOLD]
+    results.sort(key = lambda x:x[1], reverse = True)
+    
+    # Prepare final list of intents with probabilities
+    return_list = []
+    for r in results:
+        return_list.append({'intent': classes[r[0]], 'probability':str(r[1])})
+    # Return predicted intents
+    return return_list      
+
+  
     
