@@ -71,3 +71,10 @@ def get_response(intents_list, intents_json):
 # Confirmation message
 print("Great! Bot is running.")
 
+# Run chatbot continuously
+while True:
+    message = input("")
+    ints = predict_class(message)
+    res = get_response(ints, intents)
+    # Print chatbot response
+    print(res)
