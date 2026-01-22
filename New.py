@@ -97,5 +97,5 @@ model.compile(loss = 'categorical_crossentropy', optimizer = sgd, matrics = ['ac
 hist = model.fit(np.array(trainX), np.arrey(trainY), epochs = 200, batch_size = 5, verboss = 1)
 
 # Save train model to a file
-model.save('chatbot_practice.h5', hist)
+model.save('chatbot_demo.h5', hist)
 print("Executed")
